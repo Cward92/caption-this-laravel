@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -14,8 +14,8 @@ class UsersController extends Controller
     {
         
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email',
+            'name' => ['required', 'unique:users'],
+            'email' => 'required|email|unique:users',
             'password' => 'required'
         ]);
 
@@ -36,6 +36,14 @@ class UsersController extends Controller
 
     public function sayHello(){
         return "Hello";
+    }
+
+    public function logout (Request $request) {
+        $token = $request->user()->token();
+        $token->revoke();
+        $token->delete();
+        $response = ['message' => 'You have successfully logged out!'];
+        return response($response, 200);
     }
      
 }
