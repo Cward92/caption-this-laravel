@@ -25,11 +25,12 @@ $router->get('/welcome', function () use ($router){
 
 $router->post('/register', 'UsersController@register');
 
-$router->get('/api/user', function(Request $request) {
-    return $request->user();
-});
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/helloUser', 'UsersController@sayHello');
     $router->post('/logout', 'UsersController@logout');
+    
+    $router->get('/api/user', function(Request $request) {
+        return $request->user();
+    });
 });

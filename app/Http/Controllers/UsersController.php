@@ -34,8 +34,9 @@ class UsersController extends Controller
         return response(['data' => $data, 'message' => 'Account created successfully!', 'status' => true]);
     }  
 
-    public function sayHello(){
-        return "Hello";
+    public function sayHello(Request $request){
+        $response = $request->user();
+        return response($response, 200);
     }
 
     public function logout (Request $request) {
@@ -45,5 +46,9 @@ class UsersController extends Controller
         $response = ['message' => 'You have successfully logged out!'];
         return response($response, 200);
     }
+
+    // public function profile (Request $request) {
+
+    // }
      
 }
