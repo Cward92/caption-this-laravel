@@ -9,11 +9,7 @@ use App\Models\Image;
 class ImageController extends Controller
 {
     public function display () {
-        return Image::all()->random(10);
+        return Image::inRandomOrder()->limit(9)->get();
     }
 
-    public function recycle () {
-        $images = Image::all();
-        $images->delete();
-    }
 }
