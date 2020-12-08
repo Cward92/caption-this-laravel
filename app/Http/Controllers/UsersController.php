@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
+use Carbon\Carbon;
+
 class UsersController extends Controller
 {
 

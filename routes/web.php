@@ -1,6 +1,10 @@
 <?php
+
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
+
+use Carbon\Carbon;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -25,6 +29,11 @@ $router->get('/welcome', function () use ($router){
 
 $router->post('/register', 'UsersController@register');
 
+$router->get('/images', 'ImageController@display');
+
+// $router->get('/profile/{id}', function () use ($router){
+//     return Profile::all()->where('id', '{id}');
+// })
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/helloUser', 'UsersController@sayHello');
