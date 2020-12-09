@@ -31,15 +31,16 @@ $router->post('/register', 'UsersController@register');
 
 $router->get('/images', 'ImageController@display');
 $router->get('/images/{id}', 'ImageController@select');
+$router->get('/captions/{id}', 'CaptionController@display');
 
 // $router->get('/profile/{id}', function () use ($router){
 //     return Profile::all()->where('id', '{id}');
 // })
-$router->post('/captions/create', 'CaptionController@store');
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/helloUser', 'UsersController@sayHello');
     $router->post('/logout', 'UsersController@logout');
+    $router->post('/captions/create', 'CaptionController@store');
     
     $router->get('/api/user', function(Request $request) {
         return $request->user();
