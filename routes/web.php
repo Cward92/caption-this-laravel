@@ -41,6 +41,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/helloUser', 'UsersController@sayHello');
     $router->post('/logout', 'UsersController@logout');
     $router->post('/captions/create', 'CaptionController@store');
+    $router->put('/captions/{id}/update', 'CaptionController@update');
     
     $router->get('/api/user', function(Request $request) {
         return $request->user();

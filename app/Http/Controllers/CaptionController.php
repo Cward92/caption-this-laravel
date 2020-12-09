@@ -21,4 +21,13 @@ class CaptionController extends Controller
         ]);
         return $this->display(request('image_id'));
     }
+
+    public function update ($id) {
+        $caption = Caption::find($id);
+        $caption->rating = $caption->rating + 1;
+
+        $caption->save();
+        return $this->display(request('image_id'));
+
+    }
 }
