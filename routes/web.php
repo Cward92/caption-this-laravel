@@ -35,11 +35,11 @@ $router->get('/images/{id}', 'ImageController@select');
 // $router->get('/profile/{id}', function () use ($router){
 //     return Profile::all()->where('id', '{id}');
 // })
+$router->post('/images/store', 'CaptionController@store');
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/helloUser', 'UsersController@sayHello');
     $router->post('/logout', 'UsersController@logout');
-    $router->post('/images/store', 'CaptionController@store');
     
     $router->get('/api/user', function(Request $request) {
         return $request->user();
