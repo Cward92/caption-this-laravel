@@ -35,7 +35,7 @@ $router->get('/images/{id}', 'ImageController@select');
 // $router->get('/profile/{id}', function () use ($router){
 //     return Profile::all()->where('id', '{id}');
 // })
-$router->post('/images/store', 'CaptionController@store');
+$router->post('/captions/create', 'CaptionController@store');
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/helloUser', 'UsersController@sayHello');

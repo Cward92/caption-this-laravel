@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Caption;
+
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -22,7 +24,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $fillable = [
         'name', 'email', 'password', 'last_logged_in'
- ];
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -32,4 +34,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    public function captions()
+    {
+        return $this->hasMany(Caption::class);
+    }
 }

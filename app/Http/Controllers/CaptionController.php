@@ -13,7 +13,7 @@ class CaptionController extends Controller
         return Caption::create([
             'image_id' => request('image_id'),
             'user_id' => request('user_id'),
-            'caption' => request('caption'),
+            'text' => request('text'),
         ]);
     }
 }

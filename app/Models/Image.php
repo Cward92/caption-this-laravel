@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Caption;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,5 +18,12 @@ class Image extends Model
     'description',
     'alt'
   ];
+
+  public function captions()
+  {
+      return $this->hasMany(Caption::class);
+  }
+
+
 }
 
