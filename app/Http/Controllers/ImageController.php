@@ -12,4 +12,17 @@ class ImageController extends Controller
         return Image::inRandomOrder()->limit(9)->get();
     }
 
+    public function select ($id) {
+        return Image::findOrFail($id);
+    }
+
+    // public function store ($id) {
+    //     echo('works');
+    //     return ImageUser::create([
+    //         'image_id' => request('image_id'),
+    //         'user_id' => request('user_id'),
+    //         'caption' => request('caption'),
+    //     ]);
+    // }
+
 }

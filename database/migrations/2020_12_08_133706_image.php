@@ -14,7 +14,7 @@ class Image extends Migration
     public function up()
     {
         Schema::create('images', function (Blueprint $table) {
-            $table->increments('id'); //you save this id in other tables
+            $table->id(); //you save this id in other tables
             $table->string('title')->nullable();
             $table->string('src');
             $table->string('mime_type')->nullable();
